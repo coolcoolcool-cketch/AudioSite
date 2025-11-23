@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Популярные аудио</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        #audioList { display: none; margin-top: 20px; }
+        .audio-item { margin: 10px 0; }
+        #mathCaptcha { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+<h1>Добро пожаловать!</h1>
+
+<div id="captchaSection">
+    <div id="mathCaptcha">
+        <p id="mathQuestion"></p>
+        <input type="number" id="mathAnswer" placeholder="Введите ответ">
+        <button onclick="checkMathCaptcha()">Подтвердить</button>
+    </div>
+
+    <div id="recaptchaSection" style="display:none;">
+        <p>Пройдите Google reCAPTCHA:</p>
+        <div class="g-recaptcha" data-sitekey="6LcRpBUsAAAAADSRiHSjTZ1o0Y_WaFrCui8zzxTv"></div>
+        <button onclick="checkRecaptcha()">Подтвердить reCAPTCHA</button>
+    </div>
+</div>
+
+<div id="audioList">
+    <h2>Популярные аудио</h2>
+    <div class="audio-item"><a href="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">Song 1</a></div>
+    <div class="audio-item"><a href="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">Song 2</a></div>
+    <div class="audio-item"><a href="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">Song 3</a></div>
+</div>
+
+<script>
+    // Простая математическая капча
+    let num1 = Math.floor(Math.random() * 10) + 1;
+    let num2 = Math.floor(Math.random() * 10) + 1;
+    let correctAnswer = num1 + num2;
+
+    document.getElementById("mathQuestion").innerText = `Сколько будет ${num1} + ${num2}?`;
+
+    function checkMathCaptcha() {
+        let answer = parseInt(document.getElementById("mathAnswer").value);
+        if (answer === correctAnswer) {
+            document.getElementById("mathCaptcha").style.display = "none";
+            document.getElementById("recaptchaSection").style.display = "block";
+        } else {
+            alert("Неверно! Попробуйте снова.");
+        }
+    }
+
+    function checkRecaptcha() {
+        let response = grecaptcha.getResponse();
+        if (response.length === 0) {
+            alert("Пожалуйста, пройдите reCAPTCHA!");
+        } else {
+            document.getElementById("captchaSection").style.display = "none";
+            document.getElementById("audioList").style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
