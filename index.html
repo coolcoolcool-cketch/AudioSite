@@ -10,6 +10,7 @@
         #audioList { display: none; margin-top: 20px; }
         .audio-item { margin: 10px 0; }
         #mathCaptcha { margin-bottom: 20px; }
+        #goToImages { margin-top: 20px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -25,7 +26,7 @@
 
     <div id="recaptchaSection" style="display:none;">
         <p>Пройдите Google reCAPTCHA:</p>
-        <div class="g-recaptcha" data-sitekey="6LcRpBUsAAAAADSRiHSjTZ1o0Y_WaFrCui8zzxTv"></div>
+        <div class="g-recaptcha" data-sitekey="ВАШ_КЛЮЧ_RECAPTCHA"></div>
         <button onclick="checkRecaptcha()">Подтвердить reCAPTCHA</button>
     </div>
 </div>
@@ -35,6 +36,11 @@
     <div class="audio-item"><a href="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">Song 1</a></div>
     <div class="audio-item"><a href="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">Song 2</a></div>
     <div class="audio-item"><a href="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">Song 3</a></div>
+
+    <!-- Кнопка перехода на сайт с картинками -->
+    <button id="goToImages" onclick="window.location.href='https://coolcoolcool-cketch.github.io/Images/'">
+        Перейти на сайт с картинками
+    </button>
 </div>
 
 <script>
